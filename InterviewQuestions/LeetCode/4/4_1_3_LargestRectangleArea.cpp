@@ -11,6 +11,7 @@ using namespace std;
 
 class Solution {
 public:
+	/* Time: O(n^2), Space: O(1) */
 	int largestRectangleArea1(vector<int> &height) {
 		int largestArea = 0;
 		int minHeight = 0;
@@ -26,6 +27,7 @@ public:
 		return largestArea;
 	}
 	
+	/* Time: O(n), Space: O(n) */
 	int largestRectangleArea2(vector<int> &height) {
 		int largestArea = 0;
 		stack<int> s;
