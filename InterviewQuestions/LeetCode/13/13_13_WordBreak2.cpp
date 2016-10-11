@@ -52,6 +52,7 @@ private:
 		}
 	}
 public:
+	/* Time: O(n^ 2), Space: O(n^2) */
 	vector<string> wordBreak(string s, unordered_set<string> &dict) {
 		vector<vector<bool>> breakPositions = genBreakPositions(s, dict);
 		vector<string> result;
