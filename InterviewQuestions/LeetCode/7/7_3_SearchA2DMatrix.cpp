@@ -17,6 +17,7 @@ using namespace std;
 
 class Solution {
 public:
+	/* Time: O(log(m*n), Space: O(1) */
 	bool searchMatrix(const vector<vector<int>> &matrix, int target) {
 		if (matrix.empty()) {
 			return false;

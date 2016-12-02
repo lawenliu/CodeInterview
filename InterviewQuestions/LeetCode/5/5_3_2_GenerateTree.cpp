@@ -53,7 +53,7 @@ public:
 		}
 	}
 	
-	void outputResult(TreeNode* root) {
+	void outputTree(TreeNode* root) {
 		queue<TreeNode*> cur, next;
 		
 		if (root != nullptr) {
@@ -64,14 +64,17 @@ public:
 			while (!cur.empty()) {
 				TreeNode* node = cur.front();
 				cur.pop();
-				cout << node->val << " ";
+				cout << node->val << "(";
 				if (node->left != nullptr) {
 					next.push(node->left);
+					cout << "/";
 				}
 				
 				if (node->right != nullptr) {
 					next.push(node->right);
-				}
+					cout << "\\";			}
+				
+				cout << ") ";
 			}
 			
 			cout << endl;
@@ -94,7 +97,7 @@ int main(void) {
 	
 	for (int i = 0; i < result.size(); i++) {
 		cout << "Tree " << i << endl;
-		s->outputResult(result[i]);
+		s->outputTree(result[i]);
 	}
 	
 	for (int i = 0; i < result.size(); i++) {
