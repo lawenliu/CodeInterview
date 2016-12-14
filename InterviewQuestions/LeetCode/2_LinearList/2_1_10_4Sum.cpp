@@ -58,7 +58,7 @@ private:
 		}
 	}
 public:
-	/* Time: O(n^2), Space: O(1) */
+	/* Time: O(n^3), Space: O(1) */
 	vector<vector<int>> threeSum(vector<int> &nums) {
 		vector<vector<int>> result;
 		if (nums.size() < 3) {
