@@ -1,10 +1,11 @@
 #LeetCode
 Question Distribution
 ---------------------
+```
 .
-├── 1. Linear List #
-|   ├── 1.1 Array #
-|   |   ├── 1.1.1 Remove Duplicates from Sorted Array #
+├── 1. Linear List
+|   ├── 1.1 Array
+|   |   ├── 1.1.1 Remove Duplicates from Sorted Array
 |   |   ├── 1.1.2 Remove Duplicates from Sorted Array II
 |   |   ├── 1.1.3 Search in Rotated Sorted Array
 |   |   ├── 1.1.4 Search in Rotated Sorted Array II
@@ -204,3 +205,5 @@ Question Distribution
     ├── 14.13 Divide Two Integers
     ├── 14.14 Text Justification
     └── 14.15 Max Points on a Line
+```
+    
