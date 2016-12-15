@@ -30,7 +30,7 @@ Question Distribution
 |   |   ├── 1.1.23 Single Number
 |   |   └── 1.1.24 Single Number II
 |   |
-|   └── Link List
+|   └── 1.2 Link List
 |       ├── 1.2.1 Add Two Numbers
 |       ├── 1.2.2 Reverse Linked List II
 |       ├── 1.2.3 Partition List
