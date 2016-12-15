@@ -2,9 +2,9 @@
 Question Distribution
 ---------------------
 .
-├── 1. Linear List
-|   ├── 1.1 Array
-|   |   ├── 1.1.1 Remove Duplicates from Sorted Array
+├── 1. Linear List #
+|   ├── 1.1 Array #
+|   |   ├── 1.1.1 Remove Duplicates from Sorted Array #
 |   |   ├── 1.1.2 Remove Duplicates from Sorted Array II
 |   |   ├── 1.1.3 Search in Rotated Sorted Array
 |   |   ├── 1.1.4 Search in Rotated Sorted Array II
