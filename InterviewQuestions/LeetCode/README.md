@@ -94,6 +94,7 @@ Question Distribution
 |   ├── 4.2 Binary Tree Construction
 |   |   ├── 4.2.1 Construct Binary Tree from Inorder and Postorder Traversal
 |   |   └── 4.2.2 Construct Binary Tree from Preorder and Inorder Traversal
+|   | 
 |   ├── 4.3 Binary Tree Finding
 |   |   ├── 4.3.1 Unique Binary Search Trees
 |   |   ├── 4.3.2 Unique Binary Search Trees II
