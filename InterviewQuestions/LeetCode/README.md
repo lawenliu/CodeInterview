@@ -1,4 +1,11 @@
 #LeetCode
+All solutions for the questions are using C++ 11. I only write some test cases for the solutions, not cover all the corners. You may need write more test case to test the solution . (Some interviewer may ask you write the test case to cover all the the code you write) 
+
+Code Tips
+---------
+* Use vector or string instead use new to allocate memory. (1. You may miss delete for new. 2. Your code will become longer.)
+* Use "!=" instead of "==" for some checking.
+
 Question Distribution
 ---------------------
 ```
