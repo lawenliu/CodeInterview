@@ -29,10 +29,10 @@ Sorting algorithms may require some extra space for comparison and temporary sto
 * Merge Sort (Best: O(nlogn), Average: O(nlogn), Worst: O(nlogn))
 * Quick Sort (Best: O(nlogn), Average: O(nlogn), Worst: O(n^2))
 * Shell Sort (Best: O(nlogn), Average: O(nlog^2(n)), Worst: O(nlog^2(n))
-* Binary Tree Sort: (Best: O(nlogn), Average: O(nlogn), Worst: O(nlogn))
-* Radix Sort: (Best: -, Average: O(n(k/d)), Worst: O(n(k/d)))
-* Bucket Sort: (Best: -, Average: O(n+r), Worst: O(n+r))
-* Couting Sort: (Best: -, Average: O(n+r), Worst: O(n+r))
+* Binary Tree Sort: (Best: O(nlogn), Average: O(nlogn), Worst: O(n^2)
+* Radix Sort: (Best: -, Average: O(nk)), Worst: O(nk)))
+* Bucket Sort: (Best: -, Average: O(n+k), Worst: O(n^2))
+* Couting Sort: (Best: -, Average: O(n+k), Worst: O(n+k))
 
 ####Space
 * Bubble Sort (O(1))
@@ -40,29 +40,26 @@ Sorting algorithms may require some extra space for comparison and temporary sto
 * Insertion Sort (O(1))
 * Heap Sort (O(1))
 * Merge Sort (O(n))
-* Quick Sort (O(logn))
+* Quick Sort (O(log(n)))
 * Shell Sort (O(1))
 * Binary Tree Sort: (O(n))
-* Radix Sort: (O(n+2^d))
-* Bucket Sort: (O(n+r))
-* Couting Sort: (O(n+r))
+* Radix Sort: (O(n+k))
+* Bucket Sort: (O(n))
+* Couting Sort: (O(k))
 
 ###Reference
-[Sorting Algorithm](#https://en.wikipedia.org/wiki/Sorting_algorithm)
+* [Wikipedia](#https://en.wikipedia.org/wiki/Sorting_algorithm)
+* [Big O CheatSheet](#http://bigocheatsheet.com/)
+* [CMU Lecture] (#https://www.cs.cmu.edu/~adamchik/15-121/lectures/Sorting%20Algorithms/sorting.html)
 
 Table of Sorting Algorithm
 -----------------
-1. [Quicksort](#Quicksort)
-1. [Features](#features)
-1. [Usage](#usage)
-1. [Structure](#structure)
-1. [Troubleshooting](#troubleshooting)
-1. [References](#references)
-1. [Deployment](#deployment)
+1. [Quicksort](#quicksort)
+1. [Merge Sort](#merge sort)
 
 Quicksort
 ---------
-[Quicksort Wikipedia](#https://en.wikipedia.org/wiki/Quicksort)
+[Quicksort Wikipedia](https://en.wikipedia.org/wiki/Quicksort)
 ###Introduction
 Quicksort is an efficient sorting algorithm, serving as a systematic method for placing the element of an array in order. When implement well, it can be about two or three times faster than its main competitors, merge sort and heapsort.
 Quciksort is a comparison sort, meaning that it can sort items of any type for which a "less-than" relation is defined. In efficient implementations it is not a stable sort, meaning that the relative order of equal sort items is not preserved. Quicksort can operate in-place on an array, requiring small additional amounts of memory to perform the sorting.
@@ -72,6 +69,7 @@ Mathematical analysis of quicksort shows that, on average, the algorithm takes O
 1. Pick an element, called a pivot, from the array.
 1. Partitioning: reorder the array so that all elements with values less than the pivot come before the pivot, while all elements with values greater than the pivot come after it (equal values can go either way). After this partitioning, the pivot is in its final position. This is called the partition operation.
 1. Recursively apply the above steps to the sub-array of elements with smaller values and seperately to the sub-array of elements with greater values.
+
 ####Pseudocode
 ```
 algorithm quicksort(A, low, high) is
@@ -106,3 +104,44 @@ The space used by quicksort depends on the version used.
 The in-place version of quicksort has a space complexity of O(logn), even in the worst case, when it is carefully implemented using the following strategies:
 * In-place partitioning is used. This unstable partition requires O(1) space.
 * After partitioning, the partition with the fewest elements is (recursively) sorted first, requiring at most O(log n) space.
+
+Merge Sort
+----------
+[Wikipedia](https://en.wikipedia.org/wiki/Merge_sort#Top-down_implementation)
+###Introduction
+Merge sort is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort. which means that the implementation preserves the input order of equal elements in the sorted output. Merge sort is a divide and conquer algorithm.
+###Algorithm
+####Steps
+1. Get middle index of sub-array.
+1. Recursion on the left sub-array from left to middle.
+1. Recursion on the right sub-array from middle + 1 to right.
+1. Merge the left sub-array and right sub-array.
+1. Recursion until left > right
+####Pseudocode
+```
+algorithm mergesort(A, left, right) is
+	if left < right then
+		middle = (left + right) / 2;
+		mergeSort(A, left, middle);
+		mergeSort(A, middle + 1, right);
+		merge(A, left, middle, right);
+```
+```
+algorithm merge(A, left, middle, right) is
+	tempA[right - left + 1];
+	k = 0;
+	i = left;
+	j = middle + 1;
+	while i <= middle && j <= right do
+		if A[i] < A[j] then
+			tempA[k++] = A[i++];
+		else
+			tempA[k++] = A[j++];
+	while i <= middle do
+		tempA[k++] = A[i++];
+	while j <= right do
+		tempA[k++] = A[j++];
+	k = 0;
+	while k < tempA.size() do
+		A[left + k] = tempA[k];
+```
