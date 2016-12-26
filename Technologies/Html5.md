@@ -53,7 +53,7 @@ The most interesting new API's in HTML5 are:
 
 ###Removed Elements in HTML5
 The following HTML4 elements have been removed in HTML5:
-* <acronym>, use instead <abbr> (<abbr> be used from HTML4.0)
+* &lt;acronym&gt;, use instead <abbr> (<abbr> be used from HTML4.0)
 * <applet>, use instead <object>
 * <basefont>, use CSS
 * <big>, use CSS
