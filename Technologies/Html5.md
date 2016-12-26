@@ -151,8 +151,10 @@ HTML5 offers new elements for better document structure:
 * <summary>: Define a visible heading for a <detail> element
 * <time>: Define a date/time
 * <wbr>: Define a possible line-break
+```
 
 ###New Form Elements
+```
 * <detalist>: Define pre-defined options for input controls
 * <keygen>: Define a key-pair generator field (for forms)
 * <output>: Define the result of a calculation
