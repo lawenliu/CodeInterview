@@ -5,8 +5,6 @@ Table of Content
 1. [Support](#support)
 1. [Elements](#elements)
 1. [Semantics](#semantics)
-1. [Migration](#migration)
-1. [Style Guide)(#sytle guide)
 
 Introduction
 ------------
@@ -53,7 +51,8 @@ The most interesting new API's in HTML5 are:
 
 ###Removed Elements in HTML5
 The following HTML4 elements have been removed in HTML5:
-* &lt;acronym&gt;, use instead <abbr> (<abbr> be used from HTML4.0)
+```
+* <acronym>, use instead <abbr> (<abbr> be used from HTML4.0)
 * <applet>, use instead <object>
 * <basefont>, use CSS
 * <big>, use CSS
@@ -64,9 +63,11 @@ The following HTML4 elements have been removed in HTML5:
 * <frameset>
 * <noframes>
 * <strike>, use CSS, <s> or <del>
-* <tt>, CSS
+* <tt>, use CSS
+```
 
 ###HTML History
+```
 * 1989: Tim Berners-Lee invented www
 * 1991: Tim Berners-Lee invented html
 * 1993: Dave Raggett drafted HTML+
@@ -78,6 +79,7 @@ The following HTML4 elements have been removed in HTML5:
 * 2012: WHATWG HTML5 Living Standard
 * 2014: W3C Recommendation: HTML5
 * 2016: W3C Candidate Recommendation: HTML 5.1
+```
 
 Suport
 ------
@@ -126,6 +128,7 @@ Elements
 --------
 ###New Semantic/Structural Elements
 HTML5 offers new elements for better document structure:
+```
 * <article>: Define an article in the document
 * <aside>: Define content aside from the page content
 * <bdi>: Define a part of text that might be formatted in a different direction from other text
@@ -153,8 +156,10 @@ HTML5 offers new elements for better document structure:
 * <detalist>: Define pre-defined options for input controls
 * <keygen>: Define a key-pair generator field (for forms)
 * <output>: Define the result of a calculation
+```
 
 ###New Input Types
+```
 * color
 * date
 * datetime
@@ -168,8 +173,10 @@ HTML5 offers new elements for better document structure:
 * time
 * url
 * week
+```
 
 ###New Input Attributes
+```
 * autocomplete
 * autofocus
 * form
@@ -186,24 +193,31 @@ HTML5 offers new elements for better document structure:
 * placeholder
 * required
 * step
+```
 
 ###New Attribue Syntax
 HTML5 allows four different syntaxes for attributes.
-This example demonstrates the different syntaxes used in an <input> tag:
+This example demonstrates the different syntaxes used in an &lt;input&gt; tag:
+```
 * Empty: <input type="text" value="John" disable>
 * Unquoted: <input type="text" value=John>
 * Double-quoted: <input type="text" value="John Doe">
 * Single-quoted: <input type="text" value='John Doe'>
+```
 
 In HTML5, all four syntaxes may be used, depending on what is needed for the attribute.
 
 ###HTML5 Graphics
+```
 * <canvas>: Draw graphics, on the fly, via scripting (usually Javascript)
 * <svg>: Draw scalable vector graphics
+```
 
 ###New Media Elements
+```
 * <audio>: Define sound content
 * <embed>: Define containers for external application (like plug-ins)
 * <source>: Define sources for <video> and <audio>
 * <track>: Define tracks for <video> and <audio>
 * <video>: Define video or movie content
+```
