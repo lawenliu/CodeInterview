@@ -1,12 +1,12 @@
 ##Trees
 Table of Content
 -----------------
-1. [n-ary tree](#n-ary tree)
+1. [n-ary tree](#n-ary-tree)
 1. [trie-tree](#trie-tree)
-1. [red/black tree](#red/black tree)
-1. [splay tree](#splay tree)
-1. [AVL tree](#avl tree)
-1. [B tree](#b tree)
+1. [red/black tree](#redblack-tree)
+1. [splay tree](#splay-tree)
+1. [AVL tree](#avl-tree)
+1. [B tree](#b-tree)
 
 n-ary tree
 ----------
