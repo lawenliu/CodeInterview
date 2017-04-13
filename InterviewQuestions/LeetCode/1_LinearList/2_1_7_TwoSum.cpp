@@ -15,6 +15,7 @@ using namespace std;
 
 class Solution {
 public:
+	/* Hashmap to store the number and indice of the number */
 	vector<int> twoSum(vector<int> &nums, int target) {
 		unordered_map<int, int> indiceMap;
 		vector<int> result;
