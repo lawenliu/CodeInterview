@@ -12,7 +12,7 @@ class Solution {
 public:
 	/*Time O(n), Space: O(1) */
 	int lengthOfLongestSubstring(string s) {
-		const int ASCII_NUMBER = 255;
+		const int ASCII_NUMBER = 256;
 		int lastIndexs[ASCII_NUMBER];
 		int lastStart = 0;
 		int maxLength = 0;

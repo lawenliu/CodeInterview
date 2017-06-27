@@ -74,5 +74,6 @@ int main(void) {
 	result = s->twoSum2(nums, 9);
 	cout << "Solution 2 Result: <" << result[0] << "," << result[1] << ">" << endl;
 	
+	delete s;
 	return 0;
 }

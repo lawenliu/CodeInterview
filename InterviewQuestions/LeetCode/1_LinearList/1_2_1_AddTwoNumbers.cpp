@@ -29,7 +29,7 @@ public:
 			int ai = pa == nullptr ? 0 : pa->val;
 			int bi = pb == nullptr ? 0 : pb->val;
 			int ri = (ai + bi + ci) % 10;
-			ci = (ai + bi) / 10;
+			ci = (ai + bi + ci) / 10;
 			pr->next = new ListNode(ri);
 			pr = pr->next;
 			pa = pa == nullptr ? nullptr : pa->next;

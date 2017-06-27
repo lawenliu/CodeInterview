@@ -59,6 +59,7 @@ public:
 							(S[i] == S[j] && f[i+1][j-1] == S[i+1][j-1]) ? S[i][j] :
 							max(f[i+1][j-1], f[i][j-1], f[i+1][j]) 
 		 s[i][j] is substring of s from i to j; f[i][j] is longest palindrome substring.
+		 Memory Reuse
 	*/
 	string longestPalindrome2(const string &s) {
 		vector<vector<Substring>> f(s.length(), vector<Substring>(s.length()));
@@ -105,6 +106,7 @@ public:
 							(j == i + 1) ? S[i] == S[j] :
 							(j > i + 1) ? S[i] == S[j] && f(i + 1, j - 1) : false;
 		 f[i][j] is flag to say whether the substring from i to j is palindrome.
+		 Dynamic Programming
 	*/
 	string longestPalindrome3(const string &s) {
 		vector<vector<bool>> f(s.length(), vector<bool>(s.length(), false));
