@@ -1,56 +1,48 @@
-/*********************************************
-* Given an array S of n integers, are there elements a, b, c, and d in S
-* such that a + b + c = target? Find all unique quadruplets in the array
-* which gives the sum of target.
+/**************************************************************************
+* Given an array S of n integers, are there elements a, b, c, and d in S such that
+* a + b + c + d = target? Find all unique quadruplets in the array which gives the
+* sum of target.
 * Note:
-* 1. Elements in a quadruplets (a, b, c, d) must be in non-descending
-*    order. (ie, a <= b <= c <= d)
+* 1. Elements in quadruplets (a, b, c, d) must be in non-descending order.
+*  (ie, a <= b <= c <= d)
 * 2. The solution set must not contain duplicate quadruplets.
-* For example, given array S = {1 0 -1 0 -2 2}, and target = 0.
-* A solution set is£º
-* (-1,  0, 0, 1)
+* For example, given array S = { 1, 0, -1, 0, -2, 2 }, and target = 0.
+* A solution set is:
+* (-1, 0, 0, 1)
 * (-2, -1, 1, 2)
-* (-2,  0, 0, 2)
-*********************************************/
+* (-2, 0, 0, 2)
+**************************************************************************/
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 class Solution {
 private:
+	/* Time: O(n), Space: O(n) */
 	void mergeSort(vector<int> &nums, int first, int last) {
-		if (first == last) {
-			return;
+		if (first < last) {
+			int mid = (first + last) / 2;
+			mergeSort(nums, first, mid);
+			mergeSort(nums, mid + 1, last);
+			merge(nums, first, mid, last);
 		}
-		
-		int mid = (first + last) / 2;
-		mergeSort(nums, first, mid);
-		mergeSort(nums, mid + 1, last);
-		merge(nums, first, mid, last);
 	}
 	
 	void merge(vector<int> &nums, int first, int mid, int last) {
 		vector<int> tmp;
 		int i = first;
 		int j = mid + 1;
-		while (i <= mid && j <= last) {
-			if (nums[i] < nums[j]) {
-				tmp.push_back(nums[i]);
+		while (i <= mid || j <= last) {
+			int hi = i <= mid ? nums[i] : INT_MAX;
+			int hj = j <= last ? nums[j] : INT_MAX;
+			if (hi < hj) {
+				tmp.push_back(hi);
 				i++;
 			} else {
-				tmp.push_back(nums[j]);
+				tmp.push_back(hj);
 				j++;
 			}
-		}
-		
-		while (i <= mid) {
-			tmp.push_back(nums[i]);
-			i++;
-		}
-		
-		while (j <= last) {
-			tmp.push_back(nums[j]);
-			j++;
 		}
 		
 		for (int i = 0; i < tmp.size(); i++) {
@@ -65,7 +57,7 @@ public:
 			return result;
 		}
 		
-		mergeSort(nums, 0, nums.size() - 1);
+		mergeSort(nums, 0, nums.size() - 1); // sort(nums.begin(), nums.end()); // sort exist in <algorithm>
 		const int target = 0;
 		
 		for (int i = 0; i < nums.size() - 3; i++) {
@@ -75,7 +67,7 @@ public:
 			
 			for (int j = i + 1; j < nums.size() - 2; j++) {
 				if (j > i + 1 && nums[j] == nums[j-1]) {
-					continue;
+					j++;
 				}
 				
 				int k = j + 1;
@@ -86,9 +78,9 @@ public:
 						while (nums[k] == nums[k-1] && k < l) {
 							k++;
 						}
-					} else if (nums[i] + nums[j] + + nums[k] + nums[l] > target) {
+					} else if (nums[i] + nums[j] + nums[k] + nums[l] > target) {
 						l--;
-						while (nums[l] == nums[l+1] && k < l) {
+						while(nums[l] == nums[l+1] && k < l) {
 							l--;
 						}
 					} else {
@@ -96,7 +88,7 @@ public:
 						k++;
 						l--;
 						while (nums[k] == nums[k-1] && k < l) {
-							k--;
+							k++;
 						}
 						
 						while (nums[l] == nums[l+1] && k < l) {
@@ -112,13 +104,13 @@ public:
 };
 
 int main(void) {
-	Solution* s = new Solution();
+	Solution *s = new Solution();
 	vector<int> nums = { 1, 0, -1, 0, -2, 2 };
 	vector<vector<int>> result = s->fourSum(nums);
 	
 	cout << "Solution:" << endl;
 	for (int i = 0; i < result.size(); i++) {
-		for (int j = 0; j < result[i].size(); j++) {
+		for (int j = 0; j < result[0].size(); j++) {
 			cout << result[i][j] << " ";
 		}
 		

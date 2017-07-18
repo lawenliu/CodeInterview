@@ -56,7 +56,7 @@ public:
 	
 	/* Time: O(n^2), Spaces: O(n^2) */
 	/* f[i][j] = (i == j) ? S[i] :
-							(S[i] == S[j] && f[i+1][j-1] == S[i+1][j-1]) ? S[i][j] :
+							(S[i] == S[j] && (f[i+1][j-1] == S[i+1][j-1] || i == j - 1)) ? S[i][j] :
 							max(f[i+1][j-1], f[i][j-1], f[i+1][j]) 
 		 s[i][j] is substring of s from i to j; f[i][j] is longest palindrome substring.
 		 Memory Reuse
@@ -85,7 +85,7 @@ public:
 					} else {
 						str.first = f[i][j-1].first;
 						str.last = f[i][j-1].last;
-					};
+					}
 
 					if (str.last - str.first < f[i+1][j].last - f[i+1][j].first) {
 						str.first = f[i+1][j].first;
@@ -154,10 +154,10 @@ int main(void) {
 	cout << "Solution 2: " << s->longestPalindrome2(s3) << endl;
 	cout << "Solution 2: " << s->longestPalindrome2(s4) << endl;
 	
-	cout << "Solution 3: " << s->longestPalindrome2(s1) << endl;
-	cout << "Solution 3: " << s->longestPalindrome2(s2) << endl;
-	cout << "Solution 3: " << s->longestPalindrome2(s3) << endl;
-	cout << "Solution 3: " << s->longestPalindrome2(s4) << endl;
+	cout << "Solution 3: " << s->longestPalindrome3(s1) << endl;
+	cout << "Solution 3: " << s->longestPalindrome3(s2) << endl;
+	cout << "Solution 3: " << s->longestPalindrome3(s3) << endl;
+	cout << "Solution 3: " << s->longestPalindrome3(s4) << endl;
 	
 	delete s;
 	return 0;

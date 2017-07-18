@@ -35,7 +35,7 @@ public:
 		int right_most = strs[0].length();
 		for (int i = 1; i < strs.size(); i++) {
 			for (int j = 0; j < right_most; j++) {
-				if (strs[i][j] != strs[0][j]) {
+				if (strs[i][j] != strs[0][j]) { // we don't need care the out_of_bound for string
 					right_most = j;
 					break;
 				}

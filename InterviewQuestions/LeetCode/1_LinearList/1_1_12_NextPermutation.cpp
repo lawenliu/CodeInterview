@@ -31,6 +31,7 @@ public:
 		
 		if (pivot < 0) {
 			reverse(nums.begin(), nums.end());
+			return;
 		}
 		
 		int change = n - 1;

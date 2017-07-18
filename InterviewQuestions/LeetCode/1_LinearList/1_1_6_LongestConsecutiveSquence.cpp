@@ -17,7 +17,7 @@ public:
 	int longestConsecutive1(const vector<int> nums) {
 		unordered_map<int, bool> used;
 		
-		for (int i = 0; i < nums.size(); i++)  {
+		for (int i = 0; i < nums.size(); i++)  { // This is not key operation, or the Time should be O(n*n)
 			used[nums[i]] = false;
 		}
 		
