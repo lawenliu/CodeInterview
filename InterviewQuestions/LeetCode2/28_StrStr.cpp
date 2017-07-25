@@ -1,8 +1,8 @@
-/***********************************************
-* Implement strStr().
-* Returns a pointer to the first occurrence of needle in haystack, or null if needle
-* is not part of haystack.
-***********************************************/
+/*************************************************
+* Implement strStr();
+* Return the index of the first occurence of needle
+* in haystack, or -1 if needle is not part of haystack.
+*************************************************/
 #include <iostream>
 #include <string>
 #include <vector>
@@ -31,16 +31,12 @@ private:
 	}
 	
 	int kmp(const string &text, const string &pattern) {
-		int i;
+		if (pattern.length() == 0 ) {
+			return 0;
+		}
+		
+		int i = 0;
 		int j = -1;
-		if (pattern.length() == 0) {
-			return 0;
-		}
-		
-		if (text.length() == 0) {
-			return 0;
-		}
-		
 		vector<int> next = computePrefix(pattern);
 		for (i = 0; i < text.length(); i++) {
 			while (j > -1 && pattern[j+1] != text[i]) {
@@ -53,7 +49,7 @@ private:
 			
 			if (j == pattern.length() - 1) {
 				return i - j;
-			} 
+			}
 		}
 		
 		return -1;
@@ -68,12 +64,10 @@ public:
 		for (int i = 0; i < haystack.length() - needle.length() + 1; i++) {
 			int k = i;
 			int j = 0;
-			for (j = 0; j < needle.length(); j++) {
+			for (j = 0; j < needle.length(); j++, k++) {
 				if (haystack[k] != needle[j]) {
 					break;
 				}
-				
-				k++;
 			}
 			
 			if (j == needle.length()) {
@@ -84,14 +78,14 @@ public:
 		return -1;
 	}
 	
-	/* Time: O(n+m), Space: O(m) */
+	/* Time: O(n + m), Space: O(m) */
 	int strStr2(const string &haystack, const string &needle) {
 		return kmp(haystack, needle);
 	}
 };
 
 int main(void) {
-	Solution* s = new Solution();
+	Solution *s = new Solution();
 	string haystack = "abaababcbababd";
 	string needle1 = "ababc";
 	string needle2 = "abcd";

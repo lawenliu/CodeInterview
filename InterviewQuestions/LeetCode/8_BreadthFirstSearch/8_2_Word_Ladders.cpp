@@ -23,6 +23,9 @@
 #include <queue>
 using namespace std;
 
+// Please test this one:
+// start = "hit", end = "cog";
+// dict = ["hot", "hig", "hog", "dot", "dog", "lot", "log"]
 class Solution {
 private:
 	bool isValidState(const unordered_set<string> &dict, const string &s, const string &end) {
@@ -112,6 +115,8 @@ public:
 					continue;
 				}
 				
+				// don't add the new states in visted for this loop,
+				// because some other word may have same extend on this same level
 				const auto newStates = stateExtend(dict, visited, state, end);
 				for (const auto newState : newStates) {
 					next.insert(newState);
@@ -129,8 +134,8 @@ public:
 
 int main(void) {
 	Solution* s = new Solution();
-	
 	unordered_set<string> dict = { "hot", "dot", "dog", "lot", "log" };
+	// unordered_set<string> dict = { "hot", "hig", "hog", "dot", "dog", "lot", "log" };
 	string start = "hit";
 	string end = "cog";
 	

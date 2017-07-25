@@ -1,20 +1,23 @@
-/*************************************************************
-* Determine if a Suduku is valid, according to: Sudoku Puzzles - The Rules:
-* http://sudoku.com.au/TheRules.aspx.
-* The Sudoku board could be partially filled where empty cells are filled
+/************************************************
+* Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.
+* The Sudoku board could be partially filled, where empty cells are filled
 * with the character '.'.
-*      -------------------
-*      |5|3|-|-|7|-|-|-|-|
-*      |6|-|-|1|9|5|-|-|-|
-*      |-|9|8|-|-|-|-|6|-|
-*      |8|-|-|-|6|-|-|-|3|
-*      |4|-|-|8|-|3|-|-|1|
-*      |7|-|-|-|2|-|-|-|6|
-*      |-|6|-|-|-|-|2|8|-|
-*      |-|-|-|4|1|9|-|-|5|
-*      |-|-|-|-|8|-|-|7|9|
-*      -------------------
-*************************************************************/
+*            -------------------
+*            |5|3|.|.|7|.|.|.|.|
+*            |6|.|.|1|9|5|.|.|.|
+*            |.|9|8|.|.|.|.|6|.|
+*            |8|.|.|.|6|.|.|.|3|
+*            |4|.|.|8|.|3|.|.|1|
+*            |7|.|.|.|2|.|.|.|6|
+*            |.|6|.|.|.|.|2|8|.|
+*            |.|.|.|4|1|9|.|.|5|
+*            |.|.|.|.|8|.|.|7|9|
+*            -------------------
+* A partially filled sudoku which is valid.
+* Note:
+* A valid Sudoku board (partially filled) is not necessary solvable.
+* Only the filled cells need to be validated.
+************************************************/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -35,7 +38,7 @@ private:
 		return true;
 	}
 public:
-	/* Time: O(n^2), Space: O(1) */
+	/* Time: O(9^2), Space: O(1) */
 	bool isValidSudoku(const vector<vector<char>> &board) {
 		bool used[9];
 		for (int i = 0; i < 9; i++) {
@@ -57,8 +60,8 @@ public:
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				fill(used, used + 9, false);
-				for (int k = i * 3; k < i * 3 + 3; k++) {
-					for (int l = j * 3; l < j * 3 + 3; l++) {
+				for (int k = i * 3; k < (i + 1) * 3; k++) {
+					for (int l = j * 3; l < (j + 1) * 3; l++) {
 						if (!check(board[k][l], used)) {
 							return false;
 						}
@@ -72,7 +75,7 @@ public:
 };
 
 int main(void) {
-	Solution* s = new Solution();
+	Solution *s = new Solution();
 	vector<vector<char>> board = {
 		{ '5', '3', '.', '.', '7', '.', '.', '.', '.' },
 		{ '6', '.', '.', '1', '9', '5', '.', '.', '.' },
@@ -86,7 +89,6 @@ int main(void) {
 	};
 	
 	cout << "Solution: " << s->isValidSudoku(board) << endl;
-	
 	
 	delete s;
 	return 0;

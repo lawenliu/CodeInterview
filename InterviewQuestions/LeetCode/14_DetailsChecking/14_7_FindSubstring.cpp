@@ -35,7 +35,7 @@ public:
 			wordExpectedCount[dict[i]]++;
 		}
 		
-		for (int i = 0; i < s.length() - catWordLen; i++) {
+		for (int i = 0; i < s.length() - catWordLen + 1; i++) {
 			unordered_map<string, int> tempExpectedCount(wordExpectedCount);
 			
 			for (int j = i ; j < i + catWordLen; j += wordLen) {

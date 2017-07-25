@@ -1,20 +1,20 @@
-/**********************************************
-* Given a collection of candiate number (C) and a target number (T),
-* find all unique combinations in C where the candidate numbers sums
-* to T.
-* Each number in C may only be used once in the combinations.
+/******************************************************
+* Given a collection of candidate numbers (C) and a target
+* number (T), find all unique combinations in C where the
+* candidate numbers sums to T.
+* Each number in C may only be used once in the combination.
 * Note:
-* 1. All numbers (including target) will be positive integers.
-* 2. Elements in a combination (a1, a2, ..., ak) must be in non-descending
-*    order. (ie, a1 <= a2 <= ... <= ak).
-* 3. The solution set must not contain duplicate combinations.
+*  1. All numbers (including target) will be positive integers.
+*  2. Elements in a combination (a1, a2, ..., ak) must be in
+*     non-descending order. (ie, a1 <= a2 <= ... <= ak).
+*  3. The solution set must not contain duplicate combinations.
 * For example, given candidate set 10, 1, 2, 7, 6, 1, 5 and target 8,
-* a solution set is:
-*   [1, 7]
-*   [1, 2, 5]
-*   [2, 6]
-*   [1, 1, 6]
-**********************************************/
+* A solution set is:
+*  [1, 7]
+*  [1, 2, 5]
+*  [2, 6]
+*  [1, 1, 6]
+******************************************************/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -31,7 +31,7 @@ private:
 		quickSort(nums, index + 1, end);
 	}
 	
-	int partition(vector<int> &nums, int start, int end) {		
+	int partition(vector<int> &nums, int start, int end) {
 		int pivot = nums[end];
 		int j = start - 1;
 		int i = start;
@@ -48,21 +48,21 @@ private:
 		swap(nums[j], nums[end]);
 		return j;
 	}
-
+	
 	void combinationSum2Aux(vector<int> nums, vector<int> &path,
 		vector<vector<int>> &result, int gap, int start) {
-		if (gap == 0) {
+	  if (gap == 0) {
 			result.push_back(path);
 			return;
 		}
 		
 		int prev = -1;
 		for (int i = start; i < nums.size(); i++) {
-			if (gap < nums[i]) { // nums is sorted array.
+			if (gap < nums[i]) {
 				return;
 			}
-
-			if (prev == nums[i]) { // avoid complicated combination
+			
+			if (prev == nums[i]) {
 				continue;
 			}
 			
@@ -73,13 +73,13 @@ private:
 		}
 	}
 public:
-	/* Time: O(n!), Space: O(n) */
+	/**/
 	vector<vector<int>> combinationSum2(vector<int> &nums, int target) {
-		quickSort(nums, 0, nums.size() - 1);
+		quickSort(nums, 0, nums.size() - 1); // sort(nums.begin(), nums.end()); in algorithm		
 		vector<vector<int>> result;
 		vector<int> path;
 		combinationSum2Aux(nums, path, result, target, 0);
-		return result;
+	  return result;
 	}
 };
 

@@ -9,7 +9,7 @@
 * After running your function, the board should be:
 *  X X X X
 *  X X X X
-*  X X O X
+*  X X X X
 *  X O X X
 *******************************************************/
 #include <iostream>
@@ -59,6 +59,7 @@ private:
 			cur.push(start);
 		}
 		
+		// Please try to use breadth first search: go through cur queue first.
 		while(!cur.empty()) {
 			auto state = cur.front();
 			cur.pop();
@@ -71,7 +72,7 @@ private:
 		}
 	}
 public:
-	/* Time: O(n), Space: O(n) */
+	/* Time: O(n^2), Space: O(n) */
 	/* We find 'O' instead of 'X' from outside to inside */
 	void solve(vector<vector<char>> &board) {
 		if (board.empty()) {
@@ -105,10 +106,11 @@ public:
 int main(void) {
 	Solution* s = new Solution();
 	vector<vector<char>> board = { 
-		{'X', 'X', 'X', 'X'},
-		{'X', 'O', 'O', 'X'},
-		{'X', 'X', 'O', 'X'},
-		{'X', 'O', 'X', 'X'}
+		{'X', 'X', 'X', 'X', 'X'},
+		{'X', 'O', 'X', 'O', 'X'},
+		{'X', 'O', 'X', 'O', 'X'},
+		{'X', 'O', 'O', 'O', 'X'},
+		{'X', 'O', 'X', 'X', 'X'}
 	};
 	
 	s->solve(board);

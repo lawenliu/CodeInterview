@@ -1,22 +1,20 @@
-/**********************************************
-* Merge two sorted linked lists and return it as a new list. The new list should
-* be made by splicing together the nodes of the first two lists.
-**********************************************/
+/*****************************************************************
+* Merge k sorted linked lists and return it as one sorted list.
+* Analyze and describe its complexity.
+*****************************************************************/
 #include <iostream>
 #include <vector>
 using namespace std;
 
 struct ListNode {
 	int val;
-	ListNode* next;
-	ListNode(int x) : val(x), next(nullptr) {};
+	ListNode *next;
+	ListNode(int v) : val(v), next(nullptr) {};
 };
 
 class Solution {
-public:
-	/* Time: O(m + n), Space: O(1) */
-	/* You also can do it in time O(min(m,n)) */
-	ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+private:
+	ListNode* mergeTwoLists(ListNode *l1, ListNode *l2) {
 		if (l1 == nullptr) {
 			return l2;
 		}
@@ -42,7 +40,21 @@ public:
 		p->next = l1 != nullptr ? l1 : l2;
 		return dummy.next;
 	}
-	
+public:
+	/* Time: O(n1 + n2 + n3 + ...), Space: O(1) */
+	ListNode* mergeKLists(vector<ListNode*> lists) {
+		if (lists.size() == 0) {
+			return nullptr;
+		}
+		
+		ListNode* p = lists[0];
+		for (int i = 1; i < lists.size(); i++) {
+			p = mergeTwoLists(p, lists[i]);
+		}
+		
+		return p;
+	}
+
 	ListNode* createList(vector<int> arr) {
 		ListNode dummy(-1);
 		ListNode* p = &dummy;
@@ -73,17 +85,16 @@ public:
 };
 
 int main(void) {
-	Solution* s = new Solution();
-	vector<int> arr1 = { 1, 3, 5, 7, 9 };
-	vector<int> arr2 = { 2, 4, 6, 8, 10 };
+	Solution *s = new Solution();
+	vector<int> array1 = { 1, 4, 7, 10 };
+	vector<int> array2 = { 2, 5, 8, 11 };
+	vector<int> array3 = { 3, 6, 9, 12 };
+	ListNode *l1 = s->createList(array1);
+	ListNode *l2 = s->createList(array2);
+	ListNode *l3 = s->createList(array3);
 	
-	ListNode* l1 = s->createList(arr1);
-	ListNode* l2 = s->createList(arr2);
-	cout << "Data 1:" << endl;
-	s->outputResult(l1);
-	cout << "Data 2:" << endl;
-	s->outputResult(l2);
-	ListNode* result = s->mergeTwoLists(l1, l2);
+	vector<ListNode*> lists = { l1, l2, l3 };
+	ListNode *result = s->mergeKLists(lists);
 	
 	cout << "Solution 1:" << endl;
 	s->outputResult(result);

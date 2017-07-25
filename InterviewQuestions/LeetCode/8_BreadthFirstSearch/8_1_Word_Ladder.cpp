@@ -78,7 +78,7 @@ public:
 				const auto newStates = stateExtend(dict, visited, state, end);
 				for (const auto newState : newStates) {
 					next.push(newState);
-					visited.insert(newState);
+					visited.insert(newState); // should add before real visting, because this will be checked for other words before this.
 				}
 			}
 			
