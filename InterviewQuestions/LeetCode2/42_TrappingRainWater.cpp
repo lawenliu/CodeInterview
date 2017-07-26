@@ -1,8 +1,10 @@
-/****************************
-* Given n non-negative integers representing an elevation map where the width of each bar is 1,
-* compute how much water it is able to trap after raining.
-* For example, given [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1], return 6.
-****************************/
+/************************************************************
+* Given n non-negative integers representing an elevation map
+* where the width of each bar is 1, compute how much water it
+* is able to trap after raining.
+* For example, given [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1],
+* return 6.
+************************************************************/
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -18,7 +20,6 @@ public:
 		}
 		
 		int totalWater = 0;
-		
 		int curMax = A[0];
 		int partSum = 0;
 		for (int i = 1; i < A.size(); i++) {
@@ -31,7 +32,7 @@ public:
 			}
 		}
 		
-		curMax = A[A.size() - 1];
+		curMax = A[A.size()-1];
 		partSum = 0;
 		for (int i = A.size() - 2; i >= 0; i--) {
 			if (curMax <= A[i]) {
@@ -79,19 +80,20 @@ public:
 	
 	/* Time: O(n), Space: O(n) */
 	int trap3(const vector<int> &A) {
-		if (A.size() < 2) {
+		const int n = A.size();
+		if (n < 2) {
 			return 0;
 		}
 		
-		int* maxLeft = new int[A.size()]();
-		int* maxRight = new int[A.size()]();
+		int *maxLeft = new int[n]();
+		int *maxRight = new int[n]();
 		int totalWater = 0;
-		
 		maxLeft[0] = 0;
-		maxRight[A.size() - 1] = 0;
-		for (int i = 1; i < A.size(); i++) {
-			maxLeft[i] = max(maxLeft[i - 1], A[i - 1]);
-			maxRight[A.size() - i - 1] = max(maxRight[A.size() - i], A[A.size() - i]);
+		maxRight[n-1] = 0;
+		
+		for (int i = 1; i < n; i++) {
+			maxLeft[i] = max(maxLeft[i-1], A[i-1]);
+			maxRight[n-i-1] = max(maxRight[n-i], A[n-i]);
 		}
 		
 		for (int i = 0; i < A.size(); i++) {
@@ -101,13 +103,13 @@ public:
 			}
 		}
 		
-		delete[] maxLeft;
-		delete[] maxRight;
+		delete []maxLeft;
+		delete []maxRight;
 		
 		return totalWater;
 	}
 	
-	/* Time: O(n), Space: O(n) */
+	/**/
 	int trap4(const vector<int> &A) {
 		stack<pair<int, int>> s;
 		int totalWater = 0;
@@ -118,7 +120,7 @@ public:
 				int pos = s.top().second;
 				totalWater += (min(height, A[i]) - lastHeight) * (i - pos - 1);
 				
-				if(A[i] < height) {
+				if (A[i] < height) {
 					break;
 				} else {
 					s.pop();
@@ -135,7 +137,7 @@ public:
 };
 
 int main(void) {
-	Solution* s = new Solution();
+	Solution *s = new Solution();
 	vector<int> A = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
 	
 	cout << "Solution 1: " << s->trap1(A) << endl;
@@ -144,6 +146,5 @@ int main(void) {
 	cout << "Solution 4: " << s->trap4(A) << endl;
 	
 	delete s;
-	
 	return 0;
 }

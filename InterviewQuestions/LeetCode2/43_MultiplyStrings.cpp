@@ -1,8 +1,8 @@
-/************************************
-* Given two numbers represented as strings, return multiplication of the numbers as 
-* a string.
-* Note: The numbers can be arbitrarily large and non-negative.
-************************************/
+/*****************************************************************
+* Given two numbers represented as strings, return multiplication
+* of the numbers as a string.
+* Note: The numbers can be arbitrarily large and are non-negative.
+*****************************************************************/
 #include <iostream>
 #include <vector>
 #include <string>
@@ -22,23 +22,23 @@ private:
 	string vectorToString(vector<int> num) {
 		string result;
 		for (int i = num.size() - 1; i >= 0; i--) {
-			result.push_back(num[i] + '0');
+			if (result.length() == 0 && num[i] == 0) { // Remove leading zero of the result
+				continue;
+			}
+			
+			result.append(1, num[i] + '0'); // result.push_back(num[i] + '0'); // result += num[i] + '0';
 		}
 		
 		return result;
 	}
 	
 	vector<int> multiplyAux(vector<int> num1, vector<int> num2) {
-		vector<int> result;
+		vector<int> result(num1.size() + num2.size(), 0);
 		for (int i = 0; i < num1.size(); i++) {
 			for (int j = 0; j < num2.size(); j++) {
-				if (i + j + 1 >= result.size()) {
-					result.push_back(0);
-					result.push_back(0);
-				}
-				result[i + j] += num1[i] * num2[j];
-				result[i + j + 1] += result[i + j] / 10;
-				result[i + j] %= 10;
+				result[i+j] += num1[i] * num2[j];
+				result[i+j+1] += result[i+j] / 10;
+				result[i+j] %= 10;
 			}
 		}
 		
@@ -55,11 +55,15 @@ public:
 };
 
 int main(void) {
-	Solution* s = new Solution();
+	Solution *s = new Solution();
 	string num1 = "99";
 	string num2 = "98";
 	
+	string num3 = "100";
+	string num4 = "1";
+	
 	cout << "Solution 1: " << s->multiply(num1, num2) << endl;
+	cout << "Solution 1: " << s->multiply(num3, num4) << endl;
 	
 	delete s;
 	return 0;

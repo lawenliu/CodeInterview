@@ -1,20 +1,23 @@
-/********************************
-* Give an array of non-negtive integers, you are initially positioned at the first index of the array.
-* Each element in the array represents your maximum jump length at that position.
-* Determine if you are able to reach the last index.
+/*************************************************************
+* Given an array of non-negative integers, you are initially
+* Positioned at the first index of the array.
+* Each element in the array represents you maximum jump length
+* at the position.
+* Your goal is to reach the last index in the minimum number
+* of jumps.
 * For example:
-* A = [2, 3, 1, 1, 4], return true.
-* A = [3, 2, 1, 0, 4], return false.
-********************************/
+* Given array A = [2, 3, 1, 1, 4]
+* The minimum number of jumps to reach the last index is 2.
+* (Jump 1 step from index 0 to 1, then 3 steps to the last index.)
+*************************************************************/
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
-/* Assume the array can jump to end, or return 0 */
 class Solution {
 public:
-	/* Time O(n), Space O(1) */
+	/* Time: O(n), Space: O(1) */
 	int canJump1(const vector<int> &nums) {
 		if (nums.size() < 2) {
 			return 0;
@@ -23,16 +26,15 @@ public:
 		int maxLen = nums[0];
 		int step = 1;
 		for (int i = 1; i < nums.size() && maxLen > 0; i++) {
-			if (maxLen + i >= nums.size()) { // maxLen - 1 + i >= nums.size() - 1;
+			if ((maxLen - 1) + i >= (nums.size() - 1)) {
 				return step;
 			}
 			
 			maxLen = maxLen - 1;
-			if(nums[i] > maxLen - 1) {
+			if (nums[i] > maxLen) {
 				maxLen = nums[i];
 				step++;
 			}
-			
 		}
 		
 		return 0;
@@ -72,13 +74,12 @@ public:
 		return 0;
 	}
 	
-	
 	/* Time: O(n), Space: O(1) */
 	int canJump3(const vector<int> &nums) {
 		int step = 0;
 		int reachMost = 0;
 		int next_reachMost = 0;
-		for (int i = 0; i < nums.size(); i++){
+		for (int i = 0; i < nums.size(); i++) {
 			if (i > reachMost) {
 				reachMost = next_reachMost;
 				step++;
@@ -92,7 +93,8 @@ public:
 };
 
 int main(void) {
-	Solution* s = new Solution();
+	Solution *s = new Solution();
+	
 	vector<int> A1 = { 2, 3, 1, 1, 4 };
 	vector<int> A2 = { 3, 2, 1, 0, 4 };
 	

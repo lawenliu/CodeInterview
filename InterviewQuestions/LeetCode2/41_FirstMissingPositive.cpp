@@ -1,26 +1,29 @@
-/***********************************************
-* Given an unsorted integer array, find the first missing positive integer.
-* For example, Given [1, 2, 0] return 3, and [3, 4, -1, 1] return 2.
-* Your algorithm should run in O(n) time and uses constant space.
-***********************************************/
+/*********************************************************************
+* Given an unsorted interger array, find the first missing positive integer.
+* For example,
+* Given [1, 2, 0] return 3,
+* and [3, 4, -1, 1] return 2.
+* You algorithm should run in O(n) time and uses constant space.
+*********************************************************************/
 #include <iostream>
 #include <vector>
 using namespace std;
 
 class Solution {
 private:
+	/* Time should be O(n), not O(nlogn), because key operation should be swap(nums[i], nums[nums[i]-1]),
+	   Not campare operation
+  */
 	void bucketSort(vector<int> &nums) {
 		for (int i = 0; i < nums.size(); i++) {
 			while (nums[i] != i + 1 && nums[i] > 0 && nums[i] < nums.size() && nums[i] != nums[nums[i]-1]) {
 				swap(nums[i], nums[nums[i]-1]);
 			}
-		} 
+		}
 	}
 public:
-	/* Time: O(nlogn), Space: O(1) */
-	/* Bucket-Sort: O(n) */
-	/* Merge-Sort */
-	/* T(n) = n / 2 + 2T(n/2) + n, we get (3n/2)logn */
+	/* Time: O(n), Space: O(1) */
+	/* The time is depending on the sort algorithm */
 	int firstMissingPositive(vector<int> nums) {
 		bucketSort(nums);
 		
