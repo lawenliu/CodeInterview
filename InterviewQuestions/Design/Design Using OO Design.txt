@@ -1,0 +1,6 @@
+Ways to approach a general Design approach:
+1. Use Cases Genereation: Gether all the possible use cases.
+2. Constraints and Analysis: How many users, how much data etc.
+3. Basic Design: Most basic design. Few users case.
+4. Bottlenecks: Find the bottlenecks and solve them.
+5. Scalability: A large number of users. 4 and 5 steps will go in loop till we get a satisfactory answer.
