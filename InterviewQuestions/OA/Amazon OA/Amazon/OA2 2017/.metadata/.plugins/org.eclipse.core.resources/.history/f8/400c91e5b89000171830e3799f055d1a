@@ -1,0 +1,32 @@
+public class OverlapRectangle{
+		double x;
+		double y;
+		public OverlapRectangle(double x, double y){
+			this.x = x;
+			this.y = y;
+		}
+	}
+class Solution {
+	public static boolean check(OverlapRectangle l1, OverlapRectangle l2, OverlapRectangle r1, OverlapRectangle r2){
+		if(l1.y < r2.y || l2.y < r1.y || r1.x < l2.x || r2.x < l1.x){   //边重合也是重合
+			return false;
+		}else
+			return true;
+	}
+	
+	
+ public static void main(String[] args) {
+	 OverlapRectangle l1 = new OverlapRectangle(3,4);
+	 OverlapRectangle l2 = new OverlapRectangle(7,1);
+	 OverlapRectangle r1 = new OverlapRectangle(7,1);
+	 OverlapRectangle r2 = new OverlapRectangle(8,0);
+	 if(check(l1,l2,r1,r2))
+	 System.out.println("Rectangles are overlapping");
+	 else
+		 System.out.println("Rectangles are not overlapping");
+	 
+ } 
+
+
+
+}
