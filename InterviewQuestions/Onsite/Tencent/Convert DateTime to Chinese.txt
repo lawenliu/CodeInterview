@@ -1,0 +1,66 @@
+// Code goes here
+
+var DATE_ZH = ["〇", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+var DATE_UNIT = ["年", "月", "日", "星期", "时", "分", "秒"];
+
+
+function timeReport(date) {
+  var dateArr = [date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getDay(), date.getHours(), date.getMinutes(), date.getSeconds()];
+  
+  var transformedDate = "";
+  
+  transformedDate = transformYear(dateArr[0]) + transformOthers(dateArr[1], 1)
+    + transformOthers(dateArr[2], 2) + transformWeekday(dateArr[3])
+    + transformOthers(dateArr[4], 4) + transformOthers(dateArr[5], 5)
+    + transformOthers(dateArr[6], 6);
+    
+  return transformedDate;
+}
+
+function transformYear(year) {
+  var transformedYear = "";
+  while (year > 0) {
+    var mod = year % 10;
+    year = Math.floor(year / 10);
+    transformedYear = DATE_ZH[mod] + transformedYear;
+  }
+  
+  return transformedYear + DATE_UNIT[0];
+}
+
+function transformWeekday(week) {
+  var transformedWeek = "";
+  
+  if (week == 7) {
+    transformedWeek = DATE_UNIT[3] + "日";
+  } else {
+    transformedWeek = DATE_UNIT[3] + DATE_ZH[week];
+  }
+  
+  return transformedWeek;
+}
+
+function transformOthers(datetime, index) {
+  var transformed = "";
+  
+  var mod = datetime % 10;
+  datetime = Math.floor(datetime / 10);
+  if (mod != 0) {
+    transformed = DATE_ZH[mod];
+  }
+  
+  if (datetime > 0) {
+    transformed = "十" + transformed;
+  }
+  
+  if (datetime > 1) {
+    transformed = DATE_ZH[datetime] + transformed;
+  }
+  
+  return transformed + DATE_UNIT[index];
+}
+
+var date = new Date();
+console.log(date);
+console.log(timeReport(date));
+

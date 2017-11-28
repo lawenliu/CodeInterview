@@ -1,43 +1,51 @@
-/****************************************************
-* Check whether the binary of number is anagram.
-* Such as 11011 (27) is anagram, 11 (3) is anagram
-****************************************************/
+/*********************************************
+* Anagram of string p in stirng s.
+* return start position list
+*********************************************/
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
 class Solution {
 public:
-	bool isAnagram(int num) {
-		int len = 0;
-		int tmp = num;
-		while (tmp / 2 > 0) {
-			len++;
-			tmp /= 2;
+	vector<int> findAnagram(string s, string p) {
+		vector<int> m1(256, 0), m2(256, 0);
+		vector<int> res;
+		int n = p.size();
+		
+		for (int i = 0; i < n; i++) {
+			m1[p[i]]++;
+			m2[s[i]]++;
+		}
+		if (m1 == m2) {
+			res.push_back(0);
 		}
 		
-		tmp = num;
-		while (tmp > 0) {
-			if ((tmp >> len) != (tmp & 1)) {
-				return false;
-			}
+		for (int i = n; i < s.size(); i++) {
+			m2[s[i]]++;
+			m2[s[i-n]]--;
 			
-			tmp &= (1 << len) - 1;
-			tmp /= 2;
-			len -= 2;
+			if (m1 == m2) {
+				res.push_back(i - n + 1);
+			}
 		}
 		
-		return true;
+		return res;
 	}
 };
 
-int main() {
-	Solution* s = new Solution();
-	int num = 5;
+int main(void) {
+	Solution *s = new Solution();
+	string ss = "cbaebabacd";
+	string p = "abc";
 	
-	cout << "The number " << num << " is " << s->isAnagram(num) << endl;
+	vector<int> res = s->findAnagram(ss, p);
+	for (int i = 0; i < res.size(); i++) {
+		cout << res[i] << ", ";
+	}
 	
 	delete s;
 	return 0;
 }
-
 

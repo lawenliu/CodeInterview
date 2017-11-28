@@ -1,0 +1,12 @@
+1. Attributes VS Properties
+	Attributes are defined by HTML. Properties are defined by DOM.
+	Some HTML attributes have 1:1 mapping onto properties. id is one example of such.
+	Some do not (e.g. the value attribute specifies the initial value of an input, but the value property specifies the current value).
+2. ES6 make first letter to be Upper of the documents
+	function firstUpperCase(str) {
+		return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+	}
+	
+	.text-capital{
+		text-transform: capitalize;
+	}

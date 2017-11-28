@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Simulation>	
+	<Building>  
+	    <numOfFloors>20</numOfFloors>
+	    <numOfElevators>4</numOfElevators>
+	    <maxPersonsPerElevator>12</maxPersonsPerElevator>
+	    <timePerFloor>1000</timePerFloor>
+	    <doorOpenTime>2000</doorOpenTime>
+	    <elevatorTimeout>2</elevatorTimeout>
+	    <Test>
+	    	<genPerson Id="1" GenTime="2" SrcFloor="1" DestFloor="10"/>
+		</Test>
+		<Test>
+	    	<genPerson Id="1" GenTime="2" SrcFloor="1" DestFloor="20"/>
+	    	<genPerson Id="2" GenTime="7" SrcFloor="1" DestFloor="10"/>
+		</Test>
+		<Test>
+	    	<genPerson Id="1" GenTime="2" SrcFloor="1" DestFloor="20"/>
+	    	<genPerson Id="2" GenTime="7" SrcFloor="1" DestFloor="10"/>
+		</Test>
+		<Test>
+	    	<genPerson Id="1" GenTime="2" SrcFloor="1" DestFloor="20"/>
+		    <genPerson Id="2" GenTime="4" SrcFloor="1" DestFloor="20"/>
+		    <genPerson Id="3" GenTime="6" SrcFloor="1" DestFloor="20"/>
+		    <genPerson Id="4" GenTime="8" SrcFloor="1" DestFloor="20"/>
+		    <genPerson Id="5" GenTime="10" SrcFloor="1" DestFloor="10"/>
+		</Test>
+    </Building>
+</Simulation>
